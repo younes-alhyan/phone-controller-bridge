@@ -103,7 +103,7 @@ To identify the correct device path for your Android controller, follow these st
       id:       "a4:53:85:5e:ec:b1"
       version:  1.0.1
       events:
-        KEY (0001): 0130  0131  0133  0134  0136  0137  0138* 0139
+        KEY (0001): 0130  0131  0133  0134  0136  0137  0138 0139
                     013a  013b  013c  013d  013e
         ABS (0003): 0000  : value 144, min 0, max 255, fuzz 0, flat 15, resolution 0
                     0001  : value 122, min 0, max 255, fuzz 0, flat 15, resolution 0
