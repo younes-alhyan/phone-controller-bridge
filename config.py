@@ -24,8 +24,6 @@ trigger_map = {
     0x05: 8   # R2
 }
 
-VJOY_SCALE = 32768  # You can move this to the CONFIG file for easier adjustment
-
 stick_axis_map = {
     0x00: 48,   # Left Stick X
     0x01: 49,   # Left Stick Y
@@ -44,3 +42,7 @@ dpad_buttons = {
     "down": 16,
     "left": 17
 }
+
+VJOY_SCALE = 32768  # You can move this to the CONFIG file for easier adjustment
+
+TRIGGER_THRESHOLD = 100
