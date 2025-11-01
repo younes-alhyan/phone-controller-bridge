@@ -12,8 +12,8 @@ This project simulates a PS4 controller using an Android phone, allowing it to i
 - [File Descriptions](#file-descriptions)
 - [Troubleshooting](#troubleshooting)
 
-## Overview
-* * * * 
+## Overview 
+
 -   **Main Components**:
 
     -   `main.py`: The entry point of the application. It sets up signal handling for graceful shutdown and starts listening for controller input.
@@ -25,10 +25,9 @@ This project simulates a PS4 controller using an Android phone, allowing it to i
     -   `utils.py`: Utility functions for scaling inputs and parsing D-pad values.
 
     -   `config.py`: Configuration file with mappings for buttons, triggers, and axes.
-* * * *
 
-## Requirements
-* * * * 
+## Requirements 
+
 1.  **Python 3.x**\
     Ensure you have Python 3 installed on your system.
 
@@ -55,15 +54,14 @@ This project simulates a PS4 controller using an Android phone, allowing it to i
 4.  **vJoy Setup**:
 
     -   You need to install [vJoy](https://vjoystick.sourceforge.io/) on your Windows machine to simulate the virtual controller. Ensure that the vJoy device is properly set up.
-* * * *
 
-## Setup
-* * * * 
+## Setup 
+
 1.  **Clone the repository**:
 
     ```shell
-        git clone <repository-url>
-        cd <project-folder>
+        git clone https://github.com/itachi-555/PS4ControllerSimulator
+        cd PS4ControllerSimulator
     ```
 
 2.  **Android Device Configuration**:
@@ -79,10 +77,9 @@ This project simulates a PS4 controller using an Android phone, allowing it to i
 3.  **vJoy Configuration**:
 
     -   Install and configure vJoy on your Windows PC, ensuring that a virtual joystick is created and ready to be used by the script.
-* * * *
 
-## Getting the `controller_device_path`
-* * * * 
+## Getting the `controller_device_path` 
+
 To identify the correct device path for your Android controller, follow these steps:
 
 1.  **Connect your Android device** via USB and ensure that **USB debugging** is enabled.
@@ -130,10 +127,9 @@ To identify the correct device path for your Android controller, follow these st
         # In config.py
         controller_device_path = "/dev/input/event7" # Update this path
     ```
-* * * *
     
-## vJoy Configuration
-* * * * 
+## vJoy Configuration 
+
 To simulate a PS4 controller with vJoy, make sure that the vJoy configuration includes all the necessary buttons and axes. Specifically, you should have `17` buttons defined to simulate all PS4 controller buttons.
 open `vJoyCon.exe` and edit `Number of Buttons` :
 * * * *
@@ -143,8 +139,8 @@ open `vJoyCon.exe` and edit `Number of Buttons` :
 
 * * * *
 
-## Running the Script
-* * * * 
+## Running the Script 
+
 To run the project, execute the `main.py` script:
 
 ```shell
@@ -160,10 +156,9 @@ This will:
 ### Graceful Shutdown
 
 The  application will continue running, listening for inputs. To shut it down, use `Ctrl+C` or send a `SIGTERM` signal to stop the script gracefully.
-* * * *
 
-## Making It Work in Games Using x360ce
-* * * * 
+## Making It Work in Games Using x360ce 
+
 To use the simulated PS4 controller in games that require an Xbox 360 controller, you'll need to map the vJoy inputs to Xbox 360 controller inputs using **x360ce**. Here's how to set it up:
 
 1.  **Download and Install x360ce**:
@@ -187,11 +182,11 @@ To use the simulated PS4 controller in games that require an Xbox 360 controller
 4.  **Use the Mapping Image**:
 
     -   To make the mapping process easier, refer to the following screenshot which shows the x360ce controller mapping setup:
-* * * *
-<p align="center"> <img src="./images/x360ce_mapping.png" alt="x360ce Controller Mapping" /> </p>
+    * * * *
+    <p align="center"> <img src="./images/x360ce_mapping.png" alt="x360ce Controller Mapping" /> </p>
 
-The image shows the mapping of buttons, triggers, and axes from the virtual PS4 controller (via vJoy) to Xbox 360 controller inputs. Follow the mapping in the image for a seamless experience in compatible games.
-* * * *
+    The image shows the mapping of buttons, triggers, and axes from the virtual PS4 controller (via vJoy) to Xbox 360 controller inputs. Follow the mapping in the image for a seamless experience in compatible games.
+    * * * *
 
 1.  **Save the Configuration**:
 
@@ -202,10 +197,9 @@ The image shows the mapping of buttons, triggers, and axes from the virtual PS4 
 2.  **Test the Controller**:
 
     -   Launch the game and test the controller to verify that all buttons and axes are functioning correctly. 
-* * * *
 
-## File Descriptions
-* * * * 
+## File Descriptions 
+
 -   `main.py`: Initializes the application and listens for controller input. Handles graceful shutdown on `SIGINT` or `SIGTERM`.
 
 -   `controller.py`: Captures and processes input events from the Android phone and sends them to vJoy.
@@ -215,14 +209,12 @@ The image shows the mapping of buttons, triggers, and axes from the virtual PS4 
 -   `utils.py`: Contains helper functions like scaling input values and parsing D-pad button states.
 
 -   `config.py`: Contains mappings for controller buttons, triggers, and axes.
-* * * *
 
-## Troubleshooting
-* * * * 
+## Troubleshooting 
+
 -   **ADB not detecting device**: Ensure that USB debugging is enabled and the phone is properly connected via USB. Run `adb devices` to check if the device is listed.
 
 -   **vJoy device not recognized**: Ensure that vJoy is installed and the virtual joystick is set up correctly. Check the vJoy configuration in the vJoy Control Panel.
 
 -   **Permission issues**: Make sure you have the necessary permissions to interact with ADB and the vJoy device on your machine.
-
-* * *
+* * * *
