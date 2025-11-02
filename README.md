@@ -9,30 +9,34 @@
 
 ## 📑 Table of Contents
 
-- [🔍 Overview](#🔍-overview)
-- [⚙️ Requirements](#⚙️-requirements)
-- [🛠️ Setup](#🛠️-setup)
-- [🔗 Getting the `controller_device_path`](#🔗-getting-the-controller_device_path)
-- [🎛️ vJoy Configuration](#🎛️-vjoy-configuration)
-- [🚀 Running the Script](#🚀-running-the-script)
-- [🕹️ Making It Work in Games Using x360ce](#🕹️-making-it-work-in-games-using-x360ce)
-- [🗂️ File Descriptions](#🗂️-file-descriptions)
-- [⚠️ Troubleshooting](#⚠️-troubleshooting)
-- [🎮 Controller Mapping Table](#🎮-controller-mapping-table)
+- [🔍 Overview](#overview)
+- [⚙️ Requirements](#requirements)
+- [🛠️ Setup](#setup)
+- [🔗 Getting the `controller_device_path`](#getting-the-controller_device_path)
+- [🎛️ vJoy Configuration](#vjoy-configuration)
+- [🚀 Running the Script](#running-the-script)
+- [🕹️ Making It Work in Games Using x360ce](#making-it-work-in-games-using-x360ce)
+- [🗂️ File Descriptions](#file-descriptions)
+- [⚠️ Troubleshooting](#troubleshooting)
+- [🎮 Controller Mapping Table](#controller-mapping-table)
+
+<span id="overview"></span>
 
 ## 🔍 Overview
 
 - **Main Components**:
 
-  - `main.py`: The entry point of the application. It sets up signal handling for graceful shutdown and starts listening for controller input.
+- `main.py`: The entry point of the application. It sets up signal handling for graceful shutdown and starts listening for controller input.
 
-  - `controller.py`: Listens for input events from the Android phone using ADB, processes the events, and forwards them to `vJoy`.
+- `controller.py`: Listens for input events from the Android phone using ADB, processes the events, and forwards them to `vJoy`.
 
-  - `event_handler.py`: Handles specific events such as button presses, triggers, and stick movements, translating them into vJoy actions.
+- `event_handler.py`: Handles specific events such as button presses, triggers, and stick movements, translating them into vJoy actions.
 
-  - `utils.py`: Utility functions for scaling inputs and parsing D-pad values.
+- `utils.py`: Utility functions for scaling inputs and parsing D-pad values.
 
-  - `config.py`: Configuration file with mappings for buttons, triggers, and axes.
+- `config.py`: Configuration file with mappings for buttons, triggers, and axes.
+
+<span id="requirements"></span>
 
 ## ⚙️ Requirements
 
@@ -63,6 +67,8 @@
 
     - You need to install [vJoy](https://vjoystick.sourceforge.io/) on your Windows machine to simulate the virtual controller. Ensure that the vJoy device is properly set up.
 
+<span id="setup"></span>
+
 ## 🛠️ Setup
 
 1.  **Clone the repository**:
@@ -85,6 +91,8 @@
 3.  **vJoy Configuration**:
 
     - Install and configure vJoy on your Windows PC, ensuring that a virtual joystick is created and ready to be used by the script.
+
+<span id="getting-the-controller_device_path"></span>
 
 ## 🔗 Getting the `controller_device_path`
 
@@ -136,6 +144,8 @@ To identify the correct device path for your Android controller, follow these st
         controller_device_path = "/dev/input/event7" # Update this path
     ```
 
+<span id="vjoy-configuration"></span>
+
 ## 🎛️ vJoy Configuration
 
 To simulate a PS4 controller with vJoy, make sure that the vJoy configuration includes all the necessary buttons and axes. Specifically, you should have `17` buttons defined to simulate all PS4 controller buttons.
@@ -144,6 +154,8 @@ open `vJoyCon.exe` and edit `Number of Buttons` :
 <p align="center">
   <img src="./images/vJoyConf.png" alt="vJoyConf" />
 </p>
+
+<span id="running-the-script"></span>
 
 ## 🚀 Running the Script
 
@@ -162,6 +174,8 @@ This will:
 ### Graceful Shutdown
 
 The application will continue running, listening for inputs. To shut it down, use `Ctrl+C` or send a `SIGTERM` signal to stop the script gracefully.
+
+<span id="making-it-work-in-games-using-x360ce"></span>
 
 ## 🕹️ Making It Work in Games Using x360ce
 
@@ -207,6 +221,8 @@ To use the simulated PS4 controller in games that require an Xbox 360 controller
 
     - Launch the game and test the controller to verify that all buttons and axes are functioning correctly.
 
+<span id="controller-mapping-table"></span>
+
 ## 🎮 Controller Mapping Table
 
 | PS4 Input        | Event Type | Event Code | Event Value                                 | vJoy Mapping   | Notes                                        |
@@ -239,6 +255,8 @@ To use the simulated PS4 controller in games that require an Xbox 360 controller
   - `1`: Right / Down
   - `0xffffffff`: Left / Up
 
+<span id="file-descriptions"></span>
+
 ## 🗂️ File Descriptions
 
 - `main.py`: Initializes the application and listens for controller input. Handles graceful shutdown on `SIGINT` or `SIGTERM`.
@@ -250,6 +268,8 @@ To use the simulated PS4 controller in games that require an Xbox 360 controller
 - `utils.py`: Contains helper functions like scaling input values and parsing D-pad button states.
 
 - `config.py`: Contains mappings for controller buttons, triggers, and axes.
+
+<span id="troubleshooting"></span>
 
 ## ⚠️ Troubleshooting
 
