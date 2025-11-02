@@ -11,7 +11,7 @@ This project simulates a PS4 controller using an Android phone, allowing it to i
 - [Making It Work in Games Using x360ce](#making-it-work-in-games-using-x360ce)
 - [File Descriptions](#file-descriptions)
 - [Troubleshooting](#troubleshooting)
-
+- [Controller Mapping](./MAPPING.md)
 ## Overview 
 
 -   **Main Components**:
