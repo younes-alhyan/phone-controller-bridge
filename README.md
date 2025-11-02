@@ -16,9 +16,9 @@
 - [🎛️ vJoy Configuration](#vjoy-configuration)
 - [🚀 Running the Script](#running-the-script)
 - [🕹️ Making It Work in Games Using x360ce](#making-it-work-in-games-using-x360ce)
+- [🎮 Controller Mapping Table](#controller-mapping-table)
 - [🗂️ File Descriptions](#file-descriptions)
 - [⚠️ Troubleshooting](#troubleshooting)
-- [🎮 Controller Mapping Table](#controller-mapping-table)
 
 <span id="overview"></span>
 
