@@ -4,11 +4,9 @@ from app.buttons import buttons_handler
 from app.triggers import triggers_handler
 from app.joysticks import joysticks_handler
 
-controllers = {}
 
-
-def create_controller(gamepad_id, websocket, loop):
-    controller = vg.VX360Gamepad()
+def create_gamepad(gamepad_id, websocket, loop):
+    gamepad = vg.VX360Gamepad()
 
     def vibration_callback(
         client, target, large_motor, small_motor, led_number, user_data
@@ -21,9 +19,8 @@ def create_controller(gamepad_id, websocket, loop):
         }
         asyncio.run_coroutine_threadsafe(websocket.send_json(data), loop)
 
-    controller.register_notification(callback_function=vibration_callback)
-
-    return controller
+    gamepad.register_notification(callback_function=vibration_callback)
+    return gamepad
 
 
 def gamepad_handler(gamepad, data):
@@ -33,18 +30,19 @@ def gamepad_handler(gamepad, data):
     gamepad.update()
 
 
-def gamepads_handler(gamepads, websocket, loop):
+def gamepads_handler(connection, gamepads, loop):
     active_ids = set()
 
     for data in gamepads:
         gamepad_id = data["id"]
-        active_ids.add(gamepad_id)
+        active_ids.add(gamepad_id)       
 
-        if gamepad_id not in controllers:
-            controllers[gamepad_id] = create_controller(gamepad_id, websocket, loop)
+        if gamepad_id not in connection["gamepads"]:
+            gamepad = create_gamepad(gamepad_id, connection["websocket"], loop)
+            connection["gamepads"][gamepad_id] = gamepad
 
-        gamepad_handler(controllers[gamepad_id], data)
+        gamepad_handler(connection["gamepads"][gamepad_id], data)
 
-    for gamepad_id in list(controllers):
+    for gamepad_id in list(connection["gamepads"]):
         if gamepad_id not in active_ids:
-            del controllers[gamepad_id]
+            del connection["gamepads"][gamepad_id]
